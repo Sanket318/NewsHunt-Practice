@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/NewsHunt-Practice/static/css/main.dc4d6ff2.css",
+    "main.js": "/NewsHunt-Practice/static/js/main.8c15c233.js",
+    "static/media/loading.gif": "/NewsHunt-Practice/static/media/loading.6fb93bc358cf3165f08c.gif",
+    "index.html": "/NewsHunt-Practice/index.html",
+    "main.dc4d6ff2.css.map": "/NewsHunt-Practice/static/css/main.dc4d6ff2.css.map",
+    "main.8c15c233.js.map": "/NewsHunt-Practice/static/js/main.8c15c233.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dc4d6ff2.css",
+    "static/js/main.8c15c233.js"
+  ]
+}
