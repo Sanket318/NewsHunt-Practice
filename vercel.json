@@ -1,5 +1,12 @@
 {
     "rewrites":[
-        {"source":"/(.*)", "destination": "/"}
+        {"source":"/(.*)", "destination": "/"},
+        {"source":"/business(.*)", "destination": "/business"},
+        {"source":"/entertainment(.*)", "destination": "/entertainment"},
+        {"source":"/general(.*)", "destination": "/general"},
+        {"source":"/health(.*)", "destination": "/health"},
+        {"source":"/science(.*)", "destination": "/science"},
+        {"source":"/sports(.*)", "destination": "/sports"},
+        {"source":"/technology(.*)", "destination": "/technology"},
     ]
 }
