@@ -21,7 +21,7 @@ const News = (props) => {
 
 
     const update= async()=>{
-        props.setProgress(10);
+        try {props.setProgress(10);
         let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
         setLoading(true);
         let data =  await fetch(url);
@@ -31,6 +31,9 @@ const News = (props) => {
         setTotalResults(parsedData.totalResults);
         props.setProgress(100);
         setLoading(false);
+      } catch (err) {
+        console.error("Failed to fetch articles:", err);
+      }
     }
 
     useEffect(()=>{
@@ -40,13 +43,16 @@ const News = (props) => {
     }, [])
 
     const fetchMoreData = async () => {
-        let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
+        try {let url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
         setPage(page+1); 
         setLoading(true);
         let data =  await fetch(url);
         let parsedData = await data.json();
         setArticles(articles.concat(parsedData.articles));
         setLoading(false);
+      } catch (err) {
+        console.error("Failed to fetch articles:", err);
+      }
     };
 
 
@@ -55,6 +61,7 @@ const News = (props) => {
       <>
         <h1 className="text-center" style={{margin:'35px', marginTop:'90px'}}>NewsHunt - Top {firstCharCapital(props.category)} Headlines </h1>
         {/* {loading && <Spinner/>} */}
+        {Array.isArray(articles) && articles.length > 0 ? (
         <InfiniteScroll
           dataLength={articles.length}
           next={fetchMoreData}
@@ -70,8 +77,10 @@ const News = (props) => {
             })}
         </div>   
         </div>
-        
-        </InfiniteScroll>    
+        </InfiniteScroll>   
+        ) : (
+          <p>Loading news...</p>
+        )} 
       </>
     )
   
